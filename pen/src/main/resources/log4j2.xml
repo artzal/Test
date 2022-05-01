@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:SSS} %F %M %L %p - %m%n" />
+        </Console>
+
+        <RollingFile name="RollingFile" fileName="D:/git_projects/pen/logs/out.log" filePattern="D:/git_projects/pen/logs/backup/out.%d{yyyy-MM-dd}.%i.log.zip" ignoreExceptions="false">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:SSS} %F %M %L %p - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+        <Root level="TRACE" additivity="false">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFile" />
+        </Root>
+    </Loggers>
+</Configuration>
